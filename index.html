@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="light-mode">
+    <div class="login-container">
+      <form class="login-form">
+        <h2>Entrar</h2>
+
+        <select name="role" class="select-role" id="roleSelect">
+          <option value="user">Usuário</option>
+          <option value="admin">Administrador</option>
+        </select>
+
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Senha" required />
+        <button type="submit" class="btnSubmit">Login</button>
+      </form>
+        <div class="login-footer">
+            <p>Não tem uma conta? <a href="./pages/cadastro/cadastro.html">Registrar</a></p>
+    
+    </div>
+
+    <script>
+function applyTheme(role) {
+  const body = document.body;
+  if (role === "admin") {
+    body.classList.remove("light-mode");
+    body.classList.add("dark-mode");
+  } else {
+    body.classList.remove("dark-mode");
+    body.classList.add("light-mode");
+  }
+}
+
+const userRole = localStorage.getItem("userRole");
+if (userRole) { 
+  applyTheme(userRole);
+} else {
+
+  applyTheme("guest");
+}
+
+
+const roleSelect = document.getElementById("roleSelect");
+if (roleSelect) { 
+  roleSelect.addEventListener("change", function () {
+    const selectedRole = this.value;
+    
+    applyTheme(selectedRole);
+   
+    localStorage.setItem("userRole", selectedRole);
+  });
+}
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
