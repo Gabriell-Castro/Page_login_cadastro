@@ -29,7 +29,7 @@ function submitForm(e) {
   }
 
   localStorage.setItem("userRole", role);
-  window.location.href = "/pages/toDoList/toDoList.html";
+  window.location.href = "/pages/toDoList/todoList.html";
 }
 
 btnSubmit.addEventListener("click", submitForm);
